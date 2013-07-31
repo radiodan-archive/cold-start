@@ -21,6 +21,7 @@ class network {
   }
   file { "/etc/rc.local":
     content => template("network/rc_local"),
+    mode => '700',
   }
   file { "/usr/local/bin/try_adhoc_network":
     content => template("network/try_adhoc_network"),
