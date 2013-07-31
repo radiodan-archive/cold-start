@@ -1,4 +1,4 @@
 cold_start
 ==========
 
-Getting a pi running from scratch with an adhoc wireless network.
+Build a base radiodan install from a clean raspbian distro
