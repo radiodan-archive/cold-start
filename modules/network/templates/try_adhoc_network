@@ -1,22 +1,21 @@
 #!/bin/bash
 # RPi Network Conf Bootstrapper
- 
+
 createAdHocNetwork(){
   echo "Creating ad-hoc network"
   /sbin/wpa_cli terminate
   /bin/sleep 3
   /sbin/ifconfig wlan0 down
   /sbin/iwconfig wlan0 mode ad-hoc
-  /sbin/iwconfig wlan0 key aaaaa11111 #WEP key
   /sbin/iwconfig wlan0 essid radiodanternet
   /bin/sleep 3
   /sbin/ifconfig wlan0 10.0.0.200 netmask 255.255.255.0 up
   /usr/sbin/dhcpd wlan0
 }
- 
+
 connected=$(/sbin/wpa_cli status | grep COMPLETED)
 if [ -z "$connected" ]; then
   createAdHocNetwork
 fi
- 
+
 #exit 0
