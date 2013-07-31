@@ -1,4 +1,5 @@
 class network {
+  package {'avahi-daemon': }
   package {'isc-dhcp-server': }
 
   service { "isc-dhcp-server":
