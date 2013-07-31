@@ -24,6 +24,7 @@ class network {
   }
   file { "/usr/local/bin/try_adhoc_network":
     content => template("network/try_adhoc_network"),
+    mode => '700',
   }
   file { "/etc/wpa_supplicant/wpa_supplicant.conf":
     content => template("network/wpa_supplicant_conf"),
