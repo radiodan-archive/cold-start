@@ -41,13 +41,22 @@ port               "6600"
 auto_update        "yes"
 
 audio_output {
-  type            "alsa"
-  name            "My ALSA Device"
-  device          "hw:0,0"
-  format          "44100:16:2"
-  mixer_device    "default"
-  mixer_control   "PCM"
-  mixer_index     "0"
+        type            "alsa"
+        name            "Speakers"
+        device          "hw:0,0"
+        format          "44100:16:2"
+        mixer_type      "software"
+}
+
+audio_output {
+        type            "httpd"
+        name            "Web Stream"
+        encoder         "lame"
+        port            "8000"
+        bind_to_address "0.0.0.0"
+        bitrate         "128"
+        format          "44100:16:1"
+        max_clients     "0"
 }
 ',
   }
