@@ -1,0 +1,32 @@
+#! /bin/sh
+# /etc/init.d/wpa_cli_web
+
+### BEGIN INIT INFO
+# Provides:          wpa_cli_web
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Enable wpa_cli_web service.
+# Description:       Enable wpa_cli_web service.
+### END INIT INFO
+
+PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/bin
+
+case "$1" in
+  start)
+    wpa_cli_web start -d -l /var/log/wpa_cli_web.log
+  ;;
+  stop)
+    wpa_cli_web stop
+  ;;
+  restart)
+    wpa_cli_web restart
+  ;;
+  *)
+    echo "Usage: /etc/init.d/wpa_cli_web {start|stop|restart}"
+    exit 1
+  ;;
+esac
+
+exit 0
