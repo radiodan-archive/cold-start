@@ -6,6 +6,7 @@ class wpa_cli_web {
 
   file { '/etc/init.d/wpa_cli_web':
     content => template('wpa_cli_web/wpa_init_d.erb'),
+    mode => 755,
   }
 
   service { "wpa_cli_web":
