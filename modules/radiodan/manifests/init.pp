@@ -15,4 +15,5 @@ class radiodan {
   include ruby
   include audio
   include network
+  include wpa_cli_web
 }
