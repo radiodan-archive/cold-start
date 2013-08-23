@@ -1,23 +1,8 @@
 class network {
   package {'avahi-daemon': }
-  package {'isc-dhcp-server': }
-
-  service { "isc-dhcp-server":
-    enable => false,
-    ensure => stopped,
-    require => Package['isc-dhcp-server']
-  }
 
   file { "/etc/network/interfaces":
     content => template("network/interfaces"),
-  }
-  file { "/etc/dhcp/dhcpd.conf":
-    content => template("network/dhcpd_conf"),
-    require => Package['isc-dhcp-server']
-  }
-  file { "/etc/default/isc-dhcp-server":
-    content => template("network/isc_dhcp_server"),
-    require => Package['isc-dhcp-server']
   }
   file { "/etc/rc.local":
     content => template("network/rc_local"),
