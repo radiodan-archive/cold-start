@@ -5,7 +5,7 @@ class dnsmasq {
 
   file {'/etc/dnsmasq.conf':
     content => "
-address=/#/raspberrypi.local
+address=/#/10.0.0.200
 interface=wlan0
 dhcp-range=10.0.0.2,10.0.0.20,12h
     ",
