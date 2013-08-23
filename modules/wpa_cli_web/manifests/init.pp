@@ -2,6 +2,7 @@ class wpa_cli_web {
   package { 'wpa_cli_web':
     provider => 'gem',
     require => Package['ruby1.9.3'],
+    ensure => latest,
   }
 
   file { '/etc/init.d/wpa_cli_web':
@@ -10,7 +11,7 @@ class wpa_cli_web {
   }
 
   service { "wpa_cli_web":
-    ensure => running,
+    ensure => stopped,
     enable => true,
     require => [Package["wpa_cli_web"], File["/etc/init.d/wpa_cli_web"]],
   }
