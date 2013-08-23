@@ -7,7 +7,7 @@ class dnsmasq {
     content => "
 address=/#/raspberrypi.local
 interface=wlan0
-dhcp-range=10.0.0.2,10.0.0.20,1m
+dhcp-range=10.0.0.2,10.0.0.20,12h
     ",
     mode => 755,
   }
