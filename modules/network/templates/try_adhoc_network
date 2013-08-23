@@ -8,7 +8,6 @@ createAdHocNetwork(){
   /sbin/iwconfig wlan0 essid radiodanternet
   /bin/sleep 3
   /sbin/ifconfig wlan0 10.0.0.200 netmask 255.255.255.0 up
-  /usr/sbin/dhcpd wlan0
 }
 
 connected=$(/sbin/wpa_cli status | grep COMPLETED)

@@ -4,7 +4,7 @@ class network {
 
   service { "isc-dhcp-server":
     enable => false,
-    ensure => 'stopped',
+    ensure => stopped,
     require => Package['isc-dhcp-server']
   }
 
