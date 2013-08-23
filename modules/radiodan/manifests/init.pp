@@ -16,4 +16,5 @@ class radiodan {
   include audio
   include network
   include wpa_cli_web
+  include dnsmasq
 }
