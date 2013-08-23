@@ -14,7 +14,8 @@ createAdHocNetwork(){
 connected=$(/sbin/wpa_cli status | grep COMPLETED)
 if [ -z "$connected" ]; then
   createAdHocNetwork
-  /usr/sbin/service start wpa_cli_web
+  /usr/sbin/service wpa_cli_web start
+  /usr/sbin/service dnsmasq start
 fi
 
 #exit 0
