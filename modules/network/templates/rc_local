@@ -17,6 +17,10 @@ if [ "$_IP" ]; then
   printf "My IP address is %s\n" "$_IP"
 fi
 
+# Copy hostname file from boot partition
+# if newer than hostname itself
+/bin/cp -u /boot/hostname.txt /etc/hostname
+
 /usr/local/bin/try_adhoc_network > /home/pi/adhoc_log.txt 2>&1
 iwconfig >> /home/pi/adhoc_log.txt
 
