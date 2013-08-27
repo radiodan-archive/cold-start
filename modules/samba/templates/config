@@ -1,0 +1,6 @@
+[rapps]
+  path = /var/radiodan/rapps
+  comment = Radiodan Apps
+  writeable = yes
+  guest only = no
+  force user = pi
