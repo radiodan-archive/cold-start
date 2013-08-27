@@ -15,6 +15,9 @@ class network {
   file { "/etc/wpa_supplicant/wpa_supplicant.conf":
     content => template("network/wpa_supplicant_conf"),
   }
+  file { "/boot/wpa_supplicant.txt":
+    content => template("network/wpa_supplicant_conf"),
+  }
   file { "/boot/hostname.txt":
     content => "radiodan",
   }

@@ -21,6 +21,10 @@ fi
 # if newer than hostname itself
 /bin/cp -u /boot/hostname.txt /etc/hostname
 
+# Copy wpa_supplicant file from boot partition
+# if newer than current config file
+/bin/cp -u /boot/wpa_supplicant.txt /etc/wpa_supplicant/wpa_supplicant.conf
+
 /usr/local/bin/try_adhoc_network > /home/pi/adhoc_log.txt 2>&1
 iwconfig >> /home/pi/adhoc_log.txt
 
