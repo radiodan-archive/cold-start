@@ -1,6 +1,11 @@
-[rapps]
-  path = /var/radiodan/rapps
-  comment = Radiodan Apps
+[global]
+  security = user
+
+[radiodan-home]
+  path = /home/pi
+  comment = Radiodan Home
   writeable = yes
-  guest only = no
   force user = pi
+  public = yes
+  valid users = pi
+  browseable = yes

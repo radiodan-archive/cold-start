@@ -1,3 +1,7 @@
+# We have to manually run the smbpasswd command
+# to create a samba password for the pi user
+#    $ sudo smbpasswd -a pi
+#
 class samba {
   package { "samba": }
   package { "samba-common-bin": }
@@ -5,15 +9,6 @@ class samba {
   service { "samba":
     ensure => "running",
     require => Package['samba'],
-  }
-
-  file { "/var/radiodan":
-    ensure => "directory",
-  }
-
-  file { "/var/radiodan/rapps":
-    ensure => "directory",
-    require => File['/var/radiodan'],
   }
 
   file { "/etc/samba/smb.conf":
