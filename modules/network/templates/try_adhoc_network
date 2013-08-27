@@ -11,10 +11,16 @@ createAdHocNetwork(){
 }
 
 connected=$(/sbin/wpa_cli status | grep COMPLETED)
-if [ -z "$connected" ]; then
+if [ -z "$connected" ]
+then
   createAdHocNetwork
   /usr/sbin/service wpa_cli_web start
   /usr/sbin/service dnsmasq start
+  /bin/ln -s /etc/nginx/sites-available/wpa_cli_web_redirect /etc/nginx/sites-enabled/wpa_cli_web_redirect
+else
+  /bin/rm /etc/nginx/sites-enabled/wpa_cli_web_redirect
 fi
+
+/usr/sbin/service nginx reload
 
 #exit 0
