@@ -53,6 +53,8 @@ server {
   error_page 511 @status511;
 
   location @status511 {
+    sub_filter_once off;
+    sub_filter 'raspberrypi' $hostname;
     rewrite ^(.*)$ /status511.html break;
   }
 }
