@@ -26,7 +26,7 @@ class nginx {
             content="0; url=http://raspberrypi.local:3000/">
    </head>
    <body>
-      <p>You need to <a href="http://raspberrypi.local/">
+      <p>You need to <a href="http://raspberrypi.local:3000/">
       configure a Wi-Fi network</a> to gain access.</p>
    </body>
 </html>
