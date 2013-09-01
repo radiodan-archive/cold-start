@@ -4,11 +4,18 @@ echo `date`
 
 createAdHocNetwork(){
   echo "Creating ad-hoc network"
-  /sbin/ifconfig wlan0 down
-  /sbin/iwconfig wlan0 mode ad-hoc
-  /sbin/iwconfig wlan0 essid radiodanternet
-  /bin/sleep 3
-  /sbin/ifconfig wlan0 10.0.0.200 netmask 255.255.255.0 up
+  #/sbin/ifconfig wlan0 down
+  #/sbin/iwconfig wlan0 mode ad-hoc
+  #/sbin/iwconfig wlan0 essid radiodanternet
+  #/bin/sleep 3
+
+  echo "Setting up hostapd access point..."
+  sudo /usr/sbin/hostapd -B /etc/hostapd/hostapd.conf
+  /bin/sleep 2
+
+  echo "Configuring IP..."
+  sudo ifconfig wlan0 10.0.0.200 netmask 255.0.0.0
+  /bin/sleep 2
 }
 
 # Exit early if no wifi dongle
