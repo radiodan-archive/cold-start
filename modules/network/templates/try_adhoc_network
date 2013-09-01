@@ -7,8 +7,12 @@ createAdHocNetwork(){
 
   # Wait long enough for wpa_cli to do a thorough scan
   echo "Starting an access point scan"
-  /sbin/wpa_cli scan
-  /bin/sleep 10
+  # Do 6 scans over 1 min
+  for i in {1..6}
+  do
+    /sbin/wpa_cli scan
+    /bin/sleep 10
+  done
 
   echo "Setting up hostapd access point..."
   sudo /usr/sbin/hostapd -B /etc/hostapd/hostapd.conf
