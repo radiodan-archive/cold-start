@@ -11,6 +11,16 @@ createAdHocNetwork(){
   /sbin/ifconfig wlan0 10.0.0.200 netmask 255.255.255.0 up
 }
 
+# Exit early if no wifi dongle
+wifiInterface=$(/sbin/ifconfig | grep -F wlan0)
+if [ -z "$wifiInterface" ]
+then
+  echo "No wifi adapter connected, exiting"
+  exit
+else
+  echo "Wifi adapter connected"
+fi
+
 connected=$(/sbin/wpa_cli status | grep COMPLETED)
 if [ -z "$connected" ]
 then
