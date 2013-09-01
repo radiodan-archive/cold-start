@@ -6,7 +6,7 @@ class network {
 
   service {'hostapd':
     ensure => stopped,
-    enable => true,
+    enable => false,
     require => [Package["hostapd"], File["/etc/hostapd/hostapd.conf"]],
   }
   file { "/etc/hostapd/hostapd.conf":
