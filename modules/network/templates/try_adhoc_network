@@ -4,10 +4,11 @@ echo `date`
 
 createAdHocNetwork(){
   echo "Creating ad-hoc network"
-  #/sbin/ifconfig wlan0 down
-  #/sbin/iwconfig wlan0 mode ad-hoc
-  #/sbin/iwconfig wlan0 essid radiodanternet
-  #/bin/sleep 3
+
+  # Wait long enough for wpa_cli to do a thorough scan
+  echo "Starting an access point scan"
+  /sbin/wpa_cli scan
+  /bin/sleep 10
 
   echo "Setting up hostapd access point..."
   sudo /usr/sbin/hostapd -B /etc/hostapd/hostapd.conf
