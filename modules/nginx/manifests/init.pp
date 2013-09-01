@@ -41,7 +41,7 @@ class nginx {
   file { "/etc/nginx/sites-available/wpa_cli_web_redirect":
     ensure => 'present',
     require => Package["nginx"],
-    content => '
+    content => "
 server {
   listen 80;
   root /var/www/wpa_cli_web_redirect/;
@@ -58,6 +58,6 @@ server {
     rewrite ^(.*)$ /status511.html break;
   }
 }
-    ',
+    ",
   }
 }
