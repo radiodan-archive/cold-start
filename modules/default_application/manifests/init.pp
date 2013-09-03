@@ -8,7 +8,7 @@ class default_application {
   exec { "tar -xzf /tmp/radiodan_example.tar.gz":
     cwd     => "/home/pi/apps",
     creates => "/home/pi/apps/radiodan_example-master",
-    path    => ["/usr/bin", "/usr/sbin"],
+    path    => ["/bin", "/usr/bin", "/usr/sbin"],
     require => [Exec["radiodan_example.tar.gz"], File["/home/pi/apps"]]
   }
 
