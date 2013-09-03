@@ -23,10 +23,10 @@ class nginx {
    <head>
       <title>Network Authentication Required</title>
       <meta http-equiv="refresh"
-            content="0; url=http://raspberrypi.local:3000/">
+            content="0; url=http://raspberrypi.local:8080/">
    </head>
    <body>
-      <p>You need to <a href="http://raspberrypi.local:3000/">
+      <p>You need to <a href="http://raspberrypi.local:8080/">
       configure a Wi-Fi network</a> to gain access.</p>
    </body>
 </html>

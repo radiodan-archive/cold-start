@@ -15,7 +15,7 @@ PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/bin
 
 case "$1" in
   start)
-    wpa_cli_web start -e production -p 3000 -d -l /var/log/wpa_cli_web.log
+    wpa_cli_web start -e production -p 8080 -d -l /var/log/wpa_cli_web.log
   ;;
   stop)
     wpa_cli_web stop
