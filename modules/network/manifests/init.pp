@@ -9,8 +9,10 @@ class network {
     enable => false,
     require => [Package["hostapd"], File["/etc/hostapd/hostapd.conf"]],
   }
+
   file { "/etc/hostapd/hostapd.conf":
     content => template("network/hostapd_conf"),
+    require => Package["hostapd"],
   }
 
   file { "/etc/network/interfaces":
