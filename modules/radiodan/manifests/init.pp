@@ -18,5 +18,5 @@ class radiodan {
   include wpa_cli_web
   include dnsmasq
   include nginx
-  include default_app
+  include default_application
 }
