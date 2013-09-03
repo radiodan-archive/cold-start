@@ -1,5 +1,17 @@
 class network {
   package {'avahi-daemon': }
+  package {'hostapd':
+    ensure => installed,
+  }
+
+  service {'hostapd':
+    ensure => stopped,
+    enable => false,
+    require => [Package["hostapd"], File["/etc/hostapd/hostapd.conf"]],
+  }
+  file { "/etc/hostapd/hostapd.conf":
+    content => template("network/hostapd_conf"),
+  }
 
   file { "/etc/network/interfaces":
     content => template("network/interfaces"),
