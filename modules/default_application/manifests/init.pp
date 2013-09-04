@@ -20,4 +20,12 @@ class default_application {
     mode => 750,
     recurse => true,
   }
+
+  file { "/usr/local/bin/install_apps":
+    ensure => present,
+    owner => "root",
+    group => "staff",
+    mode => 770,
+    content => template("default_application/install_apps"),
+  }
 }
