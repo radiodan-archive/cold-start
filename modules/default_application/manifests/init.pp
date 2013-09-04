@@ -28,4 +28,12 @@ class default_application {
     mode => 770,
     content => template("default_application/install_apps"),
   }
+
+  file { "/usr/local/bin/start_apps":
+    ensure => present,
+    owner => "root",
+    group => "staff",
+    mode => 770,
+    content => template("default_application/start_apps"),
+  }
 }

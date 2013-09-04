@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+Dir.chdir("/home/pi/apps")
+
+def execute(cmd)
+  system(cmd)
+end
+
+Dir.glob("*") do |entry|
+  if Dir.exists?(entry)
+    Dir.chdir(entry) do
+      if File.exist?("Procfile")
+        execute "sudo service #{entry} start"
+      end
+    end
+  end
+end
