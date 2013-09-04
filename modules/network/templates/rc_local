@@ -19,6 +19,6 @@ fi
 iwconfig >> /home/pi/adhoc_log.txt
 
 /usr/local/bin/install_apps > /home/pi/install_apps_log.txt 2>&1
-/usr/sbin/service radiodan_example-master start
+/usr/local/bin/start_apps > /home/pi/start_apps_log.txt 2>&1
 
 exit 0
