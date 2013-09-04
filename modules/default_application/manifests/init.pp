@@ -6,6 +6,7 @@ class default_application {
   }
 
   exec { "tar -xzf /tmp/radiodan_example.tar.gz":
+    user    => "pi",
     cwd     => "/home/pi/apps",
     creates => "/home/pi/apps/radiodan_example-master",
     path    => ["/bin", "/usr/bin", "/usr/sbin"],
@@ -14,5 +15,9 @@ class default_application {
 
   file { "/home/pi/apps":
     ensure => directory,
+    owner => "pi",
+    group => "pi",
+    mode => 750,
+    recurse => true,
   }
 }
