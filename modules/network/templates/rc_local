@@ -8,8 +8,6 @@
 #
 # In order to enable or disable this script just change the execution
 # bits.
-#
-# By default this script does nothing.
 
 # Print the IP address
 _IP=$(hostname -I) || true
@@ -19,5 +17,8 @@ fi
 
 /usr/local/bin/try_adhoc_network > /home/pi/adhoc_log.txt 2>&1
 iwconfig >> /home/pi/adhoc_log.txt
+
+/usr/local/bin/install_apps > /home/pi/install_apps_log.txt 2>&1
+/usr/local/bin/start_apps > /home/pi/start_apps_log.txt 2>&1
 
 exit 0

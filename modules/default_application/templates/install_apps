@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+Dir.chdir("/home/pi/apps")
+
+def execute(cmd)
+  system(cmd)
+end
+
+Dir.glob("*") do |entry|
+  if Dir.exists?(entry)
+    Dir.chdir(entry) do
+      if File.exist?("Gemfile")
+        execute "sudo -u pi bundle install"
+      end
+
+      if File.exist?("Procfile")
+        execute "foreman export initscript -u pi -a #{entry} /etc/init.d"
+        execute "chmod +x /etc/init.d/#{entry}"
+      end
+    end
+  end
+end
