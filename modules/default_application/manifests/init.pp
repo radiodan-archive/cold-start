@@ -21,12 +21,19 @@ class default_application {
     recurse => true,
   }
 
+  # Gem to convert from Procfile to upstart scripts
+  package { 'procfile-upstart-exporter':
+    provider => 'gem',
+    require => Package['ruby1.9.3'],
+  }
+
   file { "/usr/local/bin/install_apps":
     ensure => present,
     owner => "root",
     group => "staff",
     mode => 770,
     content => template("default_application/install_apps"),
+    require => Package['procfile-upstart-exporter'],
   }
 
   file { "/usr/local/bin/start_apps":

@@ -10,12 +10,13 @@ Dir.glob("*") do |entry|
   if Dir.exists?(entry)
     Dir.chdir(entry) do
       if File.exist?("Gemfile")
+        puts "Found Gemfile for #{entry} - running bundle install"
         execute "sudo -u pi bundle install"
       end
 
       if File.exist?("Procfile")
-        execute "foreman export initscript -u pi -a #{entry} /etc/init.d"
-        execute "chmod +x /etc/init.d/#{entry}"
+        puts "Found Procfile for #{entry} - running procfile-upstart-exporter"
+        execute "sudo procfile-upstart-exporter create --verbose --user pi --application #{entry} --path /etc/init"
       end
     end
   end
