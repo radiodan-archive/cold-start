@@ -29,4 +29,17 @@ class network {
   file { "/etc/wpa_supplicant/wpa_supplicant.conf":
     content => template("network/wpa_supplicant_conf"),
   }
+
+  # Enable copying of a wpa_supplicant config file from
+  # boot partition on startup if newer than installed
+  # config
+  file { "/boot/wpa_supplicant.txt":
+    content => template("network/wpa_supplicant_conf"),
+  }
+
+  file { "/etc/init/wpa-conf-copier.conf":
+    content => template("network/wpa_conf_copier_upstart"),
+    mode => 644,
+  }
+
 }
