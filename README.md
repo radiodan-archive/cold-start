@@ -12,3 +12,10 @@ How to use
 4. `sudo ./provision.sh`
 5. Type 'Y' and 'Yes, do as I say' where appropriate
 6. Run `sudo raspi-config` as usual to expand the filesystem etc.
+
+Forcing yes
+-----------
+
+**This is dangerous, so be careful when using it.**
+
+Running `provision.ssh` with the `--force-yes` flag will NOT ask you for permission before installing things. It's useful if you want to automate set-up.
