@@ -26,8 +26,12 @@ class network {
     content => template("network/try_adhoc_network"),
     mode => '700',
   }
+
+  package {'wpasupplicant': }
+
   file { "/etc/wpa_supplicant/wpa_supplicant.conf":
     content => template("network/wpa_supplicant_conf"),
+    require => Package['wpasupplicant'],
   }
 
   # Enable copying of a wpa_supplicant config file from
