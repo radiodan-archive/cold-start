@@ -37,7 +37,7 @@ connected=$(/sbin/wpa_cli status | grep COMPLETED)
 if [ -z "$connected" ]
 then
   createAdHocNetwork
-  /usr/sbin/service wpa_cli_web start
+  /sbin/start wpa-cli-web
   /usr/sbin/service dnsmasq start
   /bin/ln -s /etc/nginx/sites-available/wpa_cli_web_redirect /etc/nginx/sites-enabled/wpa_cli_web_redirect
 else

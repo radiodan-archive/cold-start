@@ -1,7 +1,6 @@
 description "wpa-cli web interface"
 author "Andrew Nicolaou <andrew.nicolaou@bbc.co.uk>"
 
-start on runlevel [2345]
 stop on shutdown
 
 exec wpa_cli_web start -e production -p 8080
