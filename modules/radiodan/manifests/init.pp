@@ -12,6 +12,7 @@ class radiodan {
   package { "sqlite3": }
   package { "libsqlite3-dev": }
 
+  include users
   include ruby
   include audio
   include network
