@@ -13,7 +13,7 @@ class audio {
     ensure => "directory",
     owner  => "mpd",
     group  => "radiodan",
-    mode   => 750,
+    mode   => 777,
     require => Group['radiodan']
   }
 
@@ -21,7 +21,7 @@ class audio {
     ensure => "directory",
     owner  => "mpd",
     group  => "radiodan",
-    mode   => 750,
+    mode   => 777,
     require => Group['radiodan']
   }
 
