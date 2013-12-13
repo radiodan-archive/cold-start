@@ -14,7 +14,7 @@ dhcp-range=10.0.0.2,10.0.0.20,12h
 
   service {'dnsmasq':
     ensure => stopped,
-    enable => true,
+    enable => false,
     require => [Package["dnsmasq"], File["/etc/dnsmasq.conf"]],
   }
 }
