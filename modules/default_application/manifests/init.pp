@@ -1,4 +1,5 @@
 class default_application {
+  # Example application
   exec { "radiodan_example.tar.gz":
     path => "/usr/bin",
     command => "wget https://github.com/radiodan/radiodan_example/archive/master.tar.gz -O /tmp/radiodan_example.tar.gz",
@@ -11,6 +12,21 @@ class default_application {
     creates => "/home/pi/apps/radiodan_example-master",
     path    => ["/bin", "/usr/bin", "/usr/sbin"],
     require => [Exec["radiodan_example.tar.gz"], File["/home/pi/apps"]]
+  }
+
+  # Physical interface application
+  exec { "radiodan_example_physical_interface.tar.gz":
+    path => "/usr/bin",
+    command => "wget https://github.com/radiodan/radiodan_example_physical_interface/archive/master.tar.gz -O /tmp/radiodan_example_physical_interface.tar.gz",
+    creates => "/tmp/radiodan_example_physical_interface.tar.gz"
+  }
+
+  exec { "tar -xzf /tmp/radiodan_example_physical_interface.tar.gz":
+    user    => "pi",
+    cwd     => "/home/pi/apps",
+    creates => "/home/pi/apps/radiodan_example_physical_interface",
+    path    => ["/bin", "/usr/bin", "/usr/sbin"],
+    require => [Exec["radiodan_example_physical_interface.tar.gz"], File["/home/pi/apps"]]
   }
 
   file { "/home/pi/apps":
