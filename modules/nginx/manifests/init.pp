@@ -18,19 +18,7 @@ class nginx {
   file { "/var/www/wpa_cli_web_redirect/status511.html":
     ensure => 'present',
     require => File['/var/www/wpa_cli_web_redirect'],
-    content => '
-<html>
-   <head>
-      <title>Network Authentication Required</title>
-      <meta http-equiv="refresh"
-            content="0; url=http://raspberrypi.local:8080/">
-   </head>
-   <body>
-      <p>You need to <a href="http://raspberrypi.local:8080/">
-      configure a Wi-Fi network</a> to gain access.</p>
-   </body>
-</html>
-    ',
+    content => template("nginx/status511.html"),
   }
 
   file {"/etc/nginx/sites-enabled/default":
@@ -41,23 +29,6 @@ class nginx {
   file { "/etc/nginx/sites-available/wpa_cli_web_redirect":
     ensure => 'present',
     require => Package["nginx"],
-    content => "
-server {
-  listen 80;
-  root /var/www/wpa_cli_web_redirect/;
-
-  location / {
-    return 511;
-  }
-
-  error_page 511 @status511;
-
-  location @status511 {
-    sub_filter_once off;
-    sub_filter 'raspberrypi' $hostname;
-    rewrite ^(.*)$ /status511.html break;
-  }
-}
-    ",
+    content => template("nginx/wpa_cli_web_redirect"),
   }
 }
