@@ -7,11 +7,11 @@ class default_application {
   }
 
   exec { "tar -xzf /tmp/radiodan_example.tar.gz":
-    user    => "pi",
-    cwd     => "/home/pi/apps",
-    creates => "/home/pi/apps/radiodan_example-master",
+    user    => "radiodan",
+    cwd     => "/home/radiodan/apps",
+    creates => "/home/radiodan/apps/radiodan_example-master",
     path    => ["/bin", "/usr/bin", "/usr/sbin"],
-    require => [Exec["radiodan_example.tar.gz"], File["/home/pi/apps"]]
+    require => [Exec["radiodan_example.tar.gz"], File["/home/radiodan/apps"]]
   }
 
   # Physical interface application
@@ -22,17 +22,17 @@ class default_application {
   }
 
   exec { "tar -xzf /tmp/radiodan_example_physical_interface.tar.gz":
-    user    => "pi",
-    cwd     => "/home/pi/apps",
-    creates => "/home/pi/apps/radiodan_example_physical_interface",
+    user    => "radiodan",
+    cwd     => "/home/radiodan/apps",
+    creates => "/home/radiodan/apps/radiodan_example_physical_interface",
     path    => ["/bin", "/usr/bin", "/usr/sbin"],
-    require => [Exec["radiodan_example_physical_interface.tar.gz"], File["/home/pi/apps"]]
+    require => [Exec["radiodan_example_physical_interface.tar.gz"], File["/home/radiodan/apps"]]
   }
 
-  file { "/home/pi/apps":
+  file { "/home/radiodan/apps":
     ensure => directory,
-    owner => "pi",
-    group => "pi",
+    owner => "radiodan",
+    group => "radiodan",
     mode => 750,
     recurse => true,
   }

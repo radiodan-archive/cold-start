@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-Dir.chdir("/home/pi/apps")
+Dir.chdir("/home/radiodan/apps")
 
 def execute(cmd)
   system(cmd)
