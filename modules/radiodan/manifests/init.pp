@@ -15,6 +15,7 @@ class radiodan {
   include users
   include ruby
   include nodejs
+  include rabbitmq
   include audio
   include network
   include wpa_cli_web
