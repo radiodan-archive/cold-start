@@ -5,7 +5,7 @@ class audio {
   package { "alsa-utils": }
 
   service { "mpd":
-    ensure => "running",
+    ensure => "stopped",
     require => Package['mpd'],
   }
 
