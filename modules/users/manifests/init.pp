@@ -2,8 +2,8 @@ class users {
   user { 'radiodan':
     ensure    => present,
     home      => '/home/radiodan',
-    password  => sha1('radiodan'),
-    #password => '$6$unnvVux0$PI6kGlFOoI63KLETuB59x9jVZvy1y7DfrTKzHwD4bC/fBeyNqKwiG3Knu8k6vIXV6mLtjA0rKwQBJ18ioE8k20',
+    #password  => sha1('radiodan'),
+    password => '93185607645dad99f54fbbdbdfae1e457372bd34',
     shell     => "/bin/bash",
     groups    => 'audio',
     require   => File['/home/radiodan/.ssh/authorized_keys'],

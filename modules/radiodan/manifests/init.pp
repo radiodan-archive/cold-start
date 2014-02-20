@@ -14,6 +14,7 @@ class radiodan {
 
   include users
   include ruby
+  include nodejs
   include audio
   include network
   include wpa_cli_web
