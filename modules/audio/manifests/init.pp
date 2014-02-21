@@ -6,6 +6,7 @@ class audio {
 
   service { "mpd":
     ensure => "stopped",
+    enable => false,
     require => Package['mpd'],
   }
 
